@@ -10,7 +10,6 @@ A Retrieval-Augmented Generation system for answering questions from Bengali tex
 - [Used Tools/Libraries](#used-toolslibraries)
 - [Sample Queries](#sample-queries)
 - [API Documentation](#api-documentation)
-- [Evaluation Matrix](#evaluation-matrix)
 - [Technical Q&A](#technical-qa)
 
 ## 🛠️ Setup Guide
