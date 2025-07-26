@@ -40,7 +40,7 @@ Access the API at `http://localhost:8000`. Interactive documentation is availabl
 ## 📚 Used Tools/Libraries
 | Component | Technology | Purpose |
 | -- | -- | -- |
-| PDF Processing | PyMuPDF | Bengali text extraction with layout awareness |
+| PDF Processing | pdfplumber | Bengali text extraction with layout awareness |
 | Text Cleaning | Custom Regex | Diacritic and punctuation normalization |
 | Embeddings | paraphrase-multilingual-MiniLM-L12-v2 | Multilingual vectorization |
 | Vector Store | FAISS | Efficient similarity search |
@@ -88,9 +88,9 @@ Access the API at `http://localhost:8000`. Interactive documentation is availabl
 ## ❓ Technical Q&A
 
 ### 1. Text Extraction Method
-**Method/Library Used**: PyMuPDF (`fitz`) is used for text extraction due to its superior handling of Bengali Unicode characters and diacritics compared to alternatives like pdfplumber. The `extract_text` method uses `page.get_text("dict")` to preserve layout information (e.g., font size, position), allowing filtering of non-content elements like footnotes.
+**Method/Library Used**: pdfplumber is used for text extraction due to its robust handling of structured PDFs and ability to preserve layout information. The extract_text method in pdf_processor.py uses pdfplumber with settings (x_tolerance=2, y_tolerance=2) to improve Bengali character alignment.
 
-**Why Chosen**: PyMuPDF ensures accurate extraction of complex Bengali scripts, including conjunct characters and diacritics. It supports layout-aware extraction, which helps distinguish main content from headers or footers. For scanned PDFs, a fallback to Tesseract OCR is planned to handle image-based text.
+**Why Chosen**: pdfplumber provides reliable text extraction for digital PDFs, capturing Bengali text with reasonable accuracy. It supports layout-aware extraction, helping filter out headers and footers. For scanned PDFs, Tesseract OCR integration is planned as a future enhancement.
 
 **Formatting Challenges**:
 - **Diacritic Misalignment**: Issues like `'িা' → 'িয়া'` were addressed using custom regex replacements in the `BengaliTextCleaner` class.
