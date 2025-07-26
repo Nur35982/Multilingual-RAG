@@ -46,7 +46,7 @@ uvicorn app.main:app --reload
 
 | Component | Technology | Purpose |
 |----------|------------|---------|
-| PDF Processing | PyMuPDF (fitz) | Bengali text extraction |
+| PDF Processing | PyMuPDF  | Bengali text extraction |
 | Text Cleaning | Custom Regex | Diacritic normalization |
 | Embeddings | paraphrase-multilingual-MiniLM-L12-v2 | Multilingual vectorization |
 | Vector Store | FAISS | Efficient similarity search |
@@ -96,20 +96,13 @@ uvicorn app.main:app --reload
 
 Access interactive docs at: http://localhost:8000/docs
 
-## 📊 Evaluation Matrix
 
-| Metric | Score (1-5) | Notes |
-|--------|-------------|-------|
-| Bengali Accuracy | 4.1 | 81% correct on test queries |
-| English Accuracy | 3.7 | Some translation artifacts |
-| Response Time | 4.3 | Avg 1.2 seconds |
-| Context Relevance | 3.9 | BM25 hybrid improves this |
-| Memory Persistence | 4.0 | Maintains 3-turn context |
+
 
 ## ❓ Technical Q&A
 
 ### 1. Text Extraction Method
-- **Library**: PyMuPDF (fitz)
+- **Library**: PyMuPDF 
 - **Why Chosen**: Superior Bengali character preservation compared to alternatives
 - **Challenges Faced**:
   - Diacritic marks misalignment (e.g., "িা" → "িয়া")
@@ -122,7 +115,6 @@ Access interactive docs at: http://localhost:8000/docs
   - Preserves complete Bengali sentences
   - Overlap maintains context across chunks
   - Optimal for semantic search in morphologically rich languages
-  - Retains 92% of semantic relationships in testing
 
 ### 3. Embedding Model
 - **Model**: paraphrase-multilingual-MiniLM-L12-v2
@@ -134,13 +126,11 @@ Access interactive docs at: http://localhost:8000/docs
   - Creates similar vectors for:
     - "সুপুরুষ" ↔ "handsome man"
     - "ভাগ্য দেবতা" ↔ "fortune's god"
-  - 0.85 avg cosine similarity for paraphrases
 
 ### 4. Similarity Comparison
 - **Method**: Cosine similarity in FAISS index
 - **Why Chosen**:
   - Directional similarity works better than Euclidean for text
-  - FAISS provides 95% recall@3 in benchmarks
   - Optimized for our chunk size (400 chars)
 - **Storage**: Local FAISS files with metadata
 
@@ -156,7 +146,6 @@ Access interactive docs at: http://localhost:8000/docs
 
 ### 6. Result Improvement
 **Current Limitations**:
-- 72% accuracy on complex inference questions
 - Sometimes misses paraphrased queries
 
 **Improvement Pathways**:
