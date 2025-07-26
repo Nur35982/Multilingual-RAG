@@ -23,7 +23,7 @@ A Retrieval-Augmented Generation system for answering questions from Bengali tex
 ### Installation
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/bangla-rag.git
+git clone https://github.com/Nur35982/Multilingual-RAG.git
 cd bangla-rag
 
 # Create virtual environment
